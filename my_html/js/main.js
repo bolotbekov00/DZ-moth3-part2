@@ -1,5 +1,4 @@
 // RANDOM COLOR GENERATOR
-
 const buttonsColor = document.querySelectorAll('.btn-color')
 const javaScript = document.querySelector('#js-color')
 
@@ -149,3 +148,4 @@ videoBlock.forEach(item =>{
 
     })
 })
+
