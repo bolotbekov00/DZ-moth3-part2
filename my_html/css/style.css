@@ -1,5 +1,7 @@
 /* HEADER */
-
+body{
+    background-color: #280003;
+}
 .header {
     height: 80px;
     background-color: #280003;

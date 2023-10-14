@@ -95,3 +95,29 @@ btnReset.addEventListener('click', () => {
     mlSecondsBlock.innerHTML = '00'
 
 })
+
+
+//scroll
+window.addEventListener('scroll', e => {
+    document.body.style.cssText += `--scrollTop: ${this.scrollY}px`
+})
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+ScrollSmoother.create({
+    wrapper: '.wrapper',
+    content: '.content',
+    smooth: 1.5,
+    effect: true
+})
+
+let leftClaud = gsap.utils.toArray('.claud-left')
+leftClaud.forEach(item => {
+    gsap.fromTo(item, {opacity: 0},{
+        opacity: 0,
+        scrollTrigger:{
+            trigger: '.hero-section',
+            start: 'center',
+            end: '840',
+            scrub: true
+        }
+    })
+})
