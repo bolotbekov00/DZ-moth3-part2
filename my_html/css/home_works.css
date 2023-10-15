@@ -135,7 +135,6 @@ body {
     background-repeat: no-repeat;
     width: 326px;
     height: 110px;
-    z-index: 5;
     top: 120px;
 }
 
@@ -149,14 +148,6 @@ body {
 
 .claud-main {
     right: 40%;
-}
-.bg-2{
-    /*z-index: 1;*/
-    transform: translate3d(0, calc(var(--scrollTop) * .95), 0);
-}
-.bg-3{
-    z-index: 2;
-    transform: translate3d(0, calc(var(--scrollTop) * .14), 0);
 }
 
 /* GMAIL BLOCK */
