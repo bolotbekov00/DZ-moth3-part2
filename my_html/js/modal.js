@@ -15,7 +15,9 @@ const closeModal = () => {
 }
 
 setTimeout(() => {
-    openModal()
+    if (!isModal) {
+        openModal()
+    }
 },10000)
 modalTrigger.onclick = () => openModal()
 modal.onclick = (event) => {
@@ -36,3 +38,26 @@ const checkScroll = () => {
     })
 }
 checkScroll()
+
+
+//post data
+const formElement = document.querySelector('form')
+const postData = (form) => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault()
+
+        const request = new XMLHttpRequest()
+        request.open('POST',"server.php")
+        request.setRequestHeader('Content-type','application/json')
+
+        const formData = new FormData(form)
+        const usersObj = {}
+        formData.forEach((item, index) => {
+            usersObj[index] = item
+        })
+        const jsonUsers = JSON.stringify(usersObj)
+        request.send(jsonUsers)
+    })
+}
+
+postData(formElement)

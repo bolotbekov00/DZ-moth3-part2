@@ -79,77 +79,55 @@ body {
 
 /*bg*/
 
-.main-hw {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-}
-
-.main-hw::after {
-    content: '';
-    position: absolute;
-    z-index: 100;
-    width: 100%;
+.main-hw{
+    background-image: url("../img/img-hw/background.png") ;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-
-.layers-hw {
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     overflow: hidden;
-    position: relative;
+    padding: 0 500px;
 }
-
-.title-hw {
-    font-size: 76px;
-    background-color: transparent;
+.main-hw img{
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
+}
+.main-hw h2{
+    color: white;
+    position: absolute;
+    font-size: 90px;
     z-index: 2;
-
+    margin-top: 10px;
+    transform: translate3d(0, calc(var(--scrollTop) * .4), 0);
 }
-
-.layer-hw {
-    height: 100%;
+.layer-1{
+    position: absolute;
+    margin-bottom: 106px;
+    margin-left: 60px;
     width: 100%;
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    will-change: transform;
-    transition: var(--transition);
+    transform: translate3d(0, calc(var(--scrollTop) * .6), 0);
+    pointer-events: none;
 }
-
-.claud-left, .claud-right, .claud-main {
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 326px;
-    height: 110px;
+.layer-2{
+    width: 100%;
+    z-index: 3;
+    transform: translate3d(0, calc(var(--scrollTop) * .1), 0);
+    pointer-events: none;
+}
+#leftCloud,
+#mainCloud,
+#rightCloud {
     top: 120px;
+    width: 200px;
 }
-
-.claud-left {
+#leftCloud {
     left: 110px;
 }
-
-.claud-right {
+#rightCloud {
     right: 110px;
 }
-
-.claud-main {
-    right: 40%;
-}
-
 /* GMAIL BLOCK */
 
 .gmail_block {

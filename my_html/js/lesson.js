@@ -65,5 +65,50 @@ tabSParent.onclick = (event) => {
 const intervalDuration = 3000
 intervalId = setInterval(autoSlide, intervalDuration)
 
+//converter
 
+const somInput = document.querySelector('#som')
+const usdInput = document.querySelector('#usd')
+const eurInput = document.querySelector('#eur')
+const rubInput = document.querySelector('#ruble')
+
+const convertorChanges = (elementValue,targetElementUsd, targetElementEur,targetElementRub,itsTrue) => {
+    elementValue.oninput = () => {
+        const request = new XMLHttpRequest()
+        request.open("GET", "../data/convertor.json")
+        request.setRequestHeader('Content-type', 'application/json')
+        request.send()
+
+        request.onload = () => {
+            const response = JSON.parse(request.response)
+            if (itsTrue === "som"){
+                targetElementUsd.value = (elementValue.value / response.usd).toFixed(2)
+                targetElementEur.value = (elementValue.value / response.eur).toFixed(2)
+                targetElementRub.value = (elementValue.value / response.rub).toFixed(2)
+            }else if (itsTrue === 'usd'){
+                targetElementUsd.value = (elementValue.value * response.usd).toFixed(2)
+                targetElementEur.value = (elementValue.value * (response.usd / response.eur)).toFixed(2)
+                targetElementRub.value = (elementValue.value * (response.usd / response.rub)).toFixed(2)
+            }else if(itsTrue ==='eur'){
+                targetElementEur.value = (elementValue.value * response.eur).toFixed(2)
+                targetElementUsd.value = (elementValue.value * (response.eur / response.usd)).toFixed(2)
+                targetElementRub.value = (elementValue.value * (response.eur / response.rub)).toFixed(2)
+            }else{
+                targetElementRub.value = (elementValue.value * response.rub).toFixed(2)
+                targetElementUsd.value = (elementValue.value * (response.rub / response.usd)).toFixed(2)
+                targetElementEur.value = (elementValue.value * (response.rub / response.eur)).toFixed(2)
+            }
+            if (elementValue.value === ''){
+                targetElementRub.value = ''
+                targetElementEur.value = ''
+                targetElementUsd.value = ''
+            }
+        }
+    }
+}
+
+convertorChanges(somInput, usdInput, eurInput,rubInput,'som')
+convertorChanges(usdInput, somInput, eurInput,rubInput,'usd')
+convertorChanges(eurInput,usdInput,somInput, rubInput,'eur')
+convertorChanges(rubInput,usdInput,eurInput,somInput, 'rub')
 

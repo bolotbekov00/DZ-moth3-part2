@@ -149,3 +149,9 @@ videoBlock.forEach(item =>{
     })
 })
 
+gsap.from('.main_block', 1.2,{opacity:0,y:130,delay:0.8})
+gsap.from('.bg-6', 1.2,{opacity:0,y:100,delay:0.5})
+gsap.from('.bg-7', 1.2,{opacity:0,y:100,delay:0.5})
+gsap.from('.bg-8', 1.2,{opacity:0,x:-130,delay:0.5})
+gsap.from('.bg-9', 1.2,{opacity:0,y:150,delay:0.5})
+

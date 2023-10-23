@@ -1,4 +1,7 @@
-//Hw1-p1
+const gsap = request("../libs/gsap/gsap.min");
+
+// Hw1-p1
+
 const gmailInput = document.querySelector('#gmail_input')
 const gmailButton = document.querySelector('#gmail_button')
 const gmailResult = document.querySelector('#gmail_result')
@@ -92,4 +95,25 @@ btnReset.addEventListener('click', () => {
     mlSecondsBlock.innerHTML = '00'
 
 })
-//scroll
+window.addEventListener('scroll', e => {
+    document.body.style.cssText += `--scrollTop: ${this.scrollY}px`
+})
+
+let tl = gsap.timeline()
+
+tl.to('.title-hw', {
+    x:800
+})
+
+
+
+const tt = new Lenis()
+tt.on('scroll', (e) => {
+    console.log(e)
+})
+
+function raf(time){
+    tt.raf(time)
+    requestAnimationFrame(raf)
+}
+requestAnimationFrame(raf)
