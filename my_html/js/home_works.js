@@ -1,5 +1,3 @@
-const gsap = request("../libs/gsap/gsap.min");
-
 // Hw1-p1
 
 const gmailInput = document.querySelector('#gmail_input')
@@ -99,21 +97,94 @@ window.addEventListener('scroll', e => {
     document.body.style.cssText += `--scrollTop: ${this.scrollY}px`
 })
 
-let tl = gsap.timeline()
+// let tl = gsap.timeline()
+//
+// tl.to('.title-hw', {
+//     x:800
+// })
 
-tl.to('.title-hw', {
-    x:800
+
+//
+// const tt = new Lenis()
+// tt.on('scroll', (e) => {
+//     console.log(e)
+// })
+
+//scroll parallax
+
+gsap.from('.title-hw',1.2,{opacity:0,x:100, delay:0.8})
+gsap.from('#leftCloud',1.2,{opacity:0,x:-200, delay:0.8})
+gsap.from('#rightCloud',1.2,{opacity:0,x:200, delay:0.8})
+gsap.from('#mainCloud',1.2,{opacity:0,y:-200, delay:0.8})
+
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+ScrollSmoother.create({
+    wrapper: '.wrapper',
+    content: '.content',
+})
+let titleGsap = gsap.utils.toArray('h3')
+titleGsap.forEach(item => {
+    gsap.fromTo(item, {x: -80, opacity: 0}, {
+        opacity:1,x:0,
+        scrollTrigger:{
+            trigger:item,
+            start: '-800',
+            end: '-100',
+            scrub:true,
+        }
+    })
 })
 
+let btnGmailGsap = gsap.utils.toArray('.btn-block')
 
+btnGmailGsap.forEach(item => {
+    gsap.fromTo(item, {x:100, opacity: 0}, {
+        opacity:1,x:0,
+        scrollTrigger:{
+            trigger:item,
+            start: '-800',
+            end: '-100',
+            scrub:true,
+        }
+    })
+})
+let inputGmailGsap = gsap.utils.toArray('.input-hw')
 
-const tt = new Lenis()
-tt.on('scroll', (e) => {
-    console.log(e)
+inputGmailGsap.forEach(item => {
+    gsap.fromTo(item, {y:80, opacity: 0}, {
+        opacity:1,y:0,
+        scrollTrigger:{
+            trigger:item,
+            start: '-800',
+            end: '-100',
+            scrub:true,
+        }
+    })
 })
 
-function raf(time){
-    tt.raf(time)
-    requestAnimationFrame(raf)
-}
-requestAnimationFrame(raf)
+let childMoveGsap = gsap.utils.toArray('.child_block')
+childMoveGsap.forEach(item => {
+    gsap.fromTo(item, {y:80, opacity: 0}, {
+        opacity:1,y:0,
+        scrollTrigger:{
+            trigger:item,
+            start: '-800',
+            end: '-100',
+            scrub:true,
+        }
+    })
+})
+
+let timeGsapBlock = gsap.utils.toArray('.time')
+timeGsapBlock.forEach(item => {
+    gsap.fromTo(item, {y:80, opacity: 0}, {
+        opacity:1,y:0,
+        scrollTrigger:{
+            trigger:item,
+            start: '-800',
+            end: '-100',
+            scrub:true,
+        }
+    })
+})
